@@ -28,21 +28,21 @@ export default {
               name: "Edge Device",
               description: `Das Edge Device ist ein kleiner Industrie-PC der Plug-and-Play an die Technische Gebäudeausrüstung angeschlossen wird. Er verbindet sämtliche Sensoren, Aktoren und Steuerungsgeräte mittel der unterstützten Protokolle und ermöglicht die Datenverfügbarkeit auf der Cloud-Plattform.`,
               imageUrl:
-                "https://docs.aedifion.io/products/io/images/edge-device.png",
+                "https://docs.aedifion.io/en/products/edge-device/images/edge-device.png",
             },
             {
               name: "aedifion.io",
               description:
                 "aedifion.io ist die hochspezialisierte Cloud-Plattform für Datenerfassung und Datenbereitstellung im Gebäude. Dadurch werden Monitoring und Optimierung von technischer Gebäudeausrüstung und Energiesystemen möglich. Es ist das digitale Werkzeug, um Betriebskosten zu senken und die Energieeffizienz des Gebäudes zu steigern – für Bestand und Neubau gleichermaßen.",
               imageUrl:
-                "https://docs.aedifion.io/products/io/images/edge-device.png",
+                "https://docs.aedifion.io/en/products/io/images/integrations/dashboard.png",
             },
             {
               name: "aedifion.analytics",
               description:
                 "Das Add-on zur Cloud-Plattform aedifion.analytics ermöglicht die cloudbasierte Betriebsoptimierung mit Hilfe von künstlicher Intelligenz. Das Tool ist der Performance Coach im Gebäude, der Optimierungsempfehlungen auf Grundlage der erhobenen Daten entwickelt und so die Betriebsmannschaft entlastet und unterstützt.",
               imageUrl:
-                "https://docs.aedifion.io/products/io/images/edge-device.png",
+                "https://docs.aedifion.io/en/products/analytics/images/aedifion_analytics-overview.png",
             },
           ],
           links: [
@@ -177,8 +177,7 @@ export default {
             {
               name:"myPORT",
               description: "Mit myPORT können autorisierte App-Nutzer*innen, Ihr Smartphone als Schlüssel zum Gebäude und als Gegensprechanlage verwenden. (Türen entriegeln, manuell aus der Ferne oder bei Annäherung; Aufzugszielruf, bei Annäherung; Videogegensprechen, von Überall; Gästesteuerung, von Überall) ",
-              imageUrl:
-              "",
+              imageUrl: "https://us.schindler.com/content/dam/website/us/images/media/myport-mobile-app-turnstile.jpg/_jcr_content/renditions/cq5dam.web.1280.1280.jpeg./cq5dam.web.1280.1280.jpeg",
             },
             {
               name:"CoLab",
@@ -294,7 +293,7 @@ export default {
           tags: ["Elektronik"],
         },
         {
-          name: "American Tower",
+          name: "American Tower", // Fehler,wenn ich "Corporation" hinzufüge 
           subtitle: "Drahtlose Infrastruktur für eine vernetzte Welt",
           description: `Founded in 1995, American Tower Corporation, one of the largest global Real Estate Investment Trusts (REITs), is a leading independent owner, operator and developer of wireless and broadcast communications real estate. Our global portfolio includes approximately 180,000 communications sites, including nearly 41,000 properties in the United States and approximately 139,000 properties internationally. In addition to leasing space on wireless and broadcast towers, we provide customized solutions through our in-building systems, outdoor distributed antenna systems and other right-of-way options, managed rooftops and services that speed network deployment.
                   Headquartered in Boston, Massachusetts, American Tower has offices across the United States and in Argentina, Brazil, Burkina Faso, Chile, Colombia, Costa Rica, France, Germany, Ghana, India, Kenya, Mexico, Niger, Nigeria, Paraguay, Peru, South Africa and Uganda.`,
@@ -511,6 +510,79 @@ export default {
           links:"",
           tags:["Sensorik"],
         },
+        {
+          name:"essentry",
+          categories: [""],
+          subtitle:"Für eine komprpmisslose Sicherheit",
+          imageUrl:"https://essentry.com/wp-content/uploads/2021/11/Besuchermanagement_Kiosk_de-768x1229.png",
+          contact:"",
+          links:"",
+          tags:[""],
+        },
+        {
+          name:"Disruptive Technologies",
+          categories: [""],
+          subtitle:"IoT Sensoren für Smart Building",
+          imageUrl:"https://www.disruptive-technologies.com/hs-fs/hubfs/Screenshot%202021-08-25%20at%2013.27.05.jpg?width=780&name=Screenshot%202021-08-25%20at%2013.27.05.jpg",
+          contact:"",
+          links:"",
+          tags:[""],
+        },
+        {
+          name:"Scasa",
+          categories: [""],
+          subtitle:"Komplette 3D-Rekonstruktion von Gebaueden",
+          imageUrl:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSD1sgCl3j9QKNpNLoHEZJvyodM5dVTw_u20A&usqp=CAU",
+          contact:"",
+          links:"",
+          tags:[""],
+        },
+        {
+          name:"thing-it",
+          categories: [""],
+          subtitle:"Für eine efiziente Gebauededigitalizierung",
+          imageUrl:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfoqU32DyU7VJTvK4aGRIDQiF-8gnGOrdqVA&usqp=CAU",
+          contact:"",
+          links:"",
+          tags:[""],
+        },
+        {
+          name:"waldmann",
+          categories: ["Licht"],
+          subtitle:"Engineers of light",
+          imageUrl:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVT_tOH_DMj36w1WeJcx_h1ZmcWUuaEBaIgg&usqp=CAU",
+          contact:"",
+          links:"",
+          tags:[""],
+        },
+        {
+          name:"dormakaba",
+          categories: [""],
+          subtitle:"Sichere und innnovative Schließ- und Türsysteme",
+          imageUrl:"https://www.dormakaba.com/resource/image/500678/teaser_ratio4x3/520/390/df38ee5cca893115dabea275cc6fc0fa/0BBCB761AA0E8249B266DA5FC5CDDDEB/pic-loesungen-produkte.jpg",
+          contact:"",
+          links:"",
+          tags:[""],
+        },
+        {
+          name:"Enerthing",
+          categories: [""],
+          subtitle:"Globale IoT-Loesungen",
+          imageUrl:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8cT_JpOscXvbg25FZmPz4J4WIxB1ZHQ0fog&usqp=CAU",
+          contact:"",
+          links:"",
+          tags:[""],
+        },
+        {
+          name:"Hailo",
+          categories: [""],
+          subtitle:"Innovative Abfallsammmeloesungen und Steigeraete",
+          imageUrl:"https://www.hailo.de/fileadmin/home/teaser/teaser-hailo-einbautechnik-abfalltrennsysteme.jpg",
+          contact:"",
+          links:"",
+          tags:[""],
+        },
+
       ]),
     };
   },
