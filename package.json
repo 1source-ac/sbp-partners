@@ -11,7 +11,7 @@
     "@jamescoyle/vue-icon": "^0.1.2",
     "@mdi/js": "^5.9.55",
     "@tailwindcss/aspect-ratio": "^0.2.2",
-    "@tailwindcss/forms": "^0.2.1",
+    "@tailwindcss/forms": "^0.5.2",
     "@tailwindcss/typography": "^0.3.1",
     "axios": "^0.26.0",
     "easy-scroll": "^0.7.0",
