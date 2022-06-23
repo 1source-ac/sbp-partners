@@ -88,7 +88,7 @@
                 rounded-full
               "
             ></button>
-            <Popper v-bind="$attrs" arrow="true">
+            <Popper v-if="partner.websitesToDisplay && partner.websitesToDisplay.length > 0" v-bind="$attrs" arrow="true">
               <button
                 type="button"
                 class="
@@ -134,7 +134,7 @@ export default {
 
       oReq.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
-      oReq.send(JSON.stringify({ partner: this.partner.name, position }));
+      oReq.send(JSON.stringify({ partner: this.partner.websiteName, position }));
     },
   },
 };

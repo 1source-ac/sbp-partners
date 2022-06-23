@@ -2,7 +2,7 @@
   <main class="main-content">
     <!-- static header -->
     <header class="bg-gradient-to-r from-blue-900 to-blue-800 site-header h-16">
-      <div class="max-w-7xl lg:mx-10 py-3">
+      <div class="px-3 pt-2">
         <h1
           class="
             text-3xl
@@ -36,17 +36,51 @@
             >
           </template>
 
+          <span class="float-right mr-32" v-if="$store.state.currentConfiguration.name != null">
+            Einstellung: {{ $store.state.currentConfiguration.name }},             <button
+            id="show-modal"
+            v-if="$store.state.currentConfiguration.page > 1"
+            @click="incrementPage(-1)"
+            type="button"
+            class="
+              mdi
+              mdi-arrow-left-bold
+              px-2.5
+              py-1
+              text-center
+              text-4xl
+              text-black-700
+            "
+          ></button> Seite {{ $store.state.currentConfiguration.page }}/{{$store.state.currentConfiguration.numPages}}
+            <button
+            v-if="$store.state.currentConfiguration.numPages > $store.state.currentConfiguration.page"
+            id="show-modal"
+            @click="incrementPage(1)"
+            type="button"
+            class="
+              mdi
+              mdi-arrow-right-bold
+              px-2.5
+              py-1
+              text-center
+              text-4xl
+              text-black-700
+            "
+          ></button>
+          </span>
+
           <button
             id="show-modal"
             @click="showModal = true"
             type="button"
             class="
               absolute
-              right-5
+              right-10
+              top-2
               mdi mdi-monitor-edit
               px-2.5
               py-1
-              text-center text-xl text-black-700
+              text-center text-3xl text-black-700
               border
               rounded-full
             "
@@ -87,6 +121,11 @@ export default {
   },
   mounted() {
     console.log(this.$router.currentRoute.value.name);
+  },
+  methods: {
+    incrementPage(value) {
+      this.$store.dispatch('incrementPage', value)
+    },
   },
   data() {
     return {

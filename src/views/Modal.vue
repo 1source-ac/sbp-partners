@@ -5,23 +5,30 @@
       <div class="modal-wrapper">
         <div class="modal-container">
           <div>
-            <ul v-if="posts && posts.length">
-              <li v-for="post of posts" v-bind:key="post.id">
-                <p>
-                  <button
-                    v-on:click="postNow(post.name)"
-                    type="button"
-                    class="
-                      px-2.5
-                      py-1
-                      text-xl text-black-700
-                      border border-black
-                      rounded-full
-                    "
-                  >
-                    {{ post.label }}
-                  </button>
-                </p>
+            <ul v-if="$store.state.presets && $store.state.presets.length > 0">
+              <li
+                v-for="preset of $store.state.presets"
+                v-bind:key="preset.name"
+                class="mb-1"
+              >
+                <button
+                  v-on:click="applyPreset(preset)"
+                  type="button"
+                  class="
+                    px-2.5
+                    py-1
+                    text-2xl text-black-700
+                    border border-black
+                    rounded-full
+                  "
+                >
+                  <span class="font-bold text-3xl">{{ preset.name }}</span>
+                  {{ preset.numPages }} Seite{{
+                    preset.numPages > 1 ? "n" : ""
+                  }}, {{ preset.numWebsites }} Dashboard{{
+                    preset.numWebsites > 1 ? "s" : ""
+                  }}
+                </button>
               </li>
             </ul>
 
@@ -32,10 +39,13 @@
             </ul>
           </div>
 
-          <div class="modal-footer">
+          <div class="modal-footer mt-auto">
             <slot name="footer">
-              <button class="modal-default-button" @click="$emit('close')">
-                OK
+              <button
+                class="modal-default-button text-2xl"
+                @click="$emit('close')"
+              >
+                Schließen
               </button>
             </slot>
           </div>
@@ -52,15 +62,8 @@ export default {
     show: Boolean,
   },
   methods: {
-    postNow: function (message) {
-      console.log(message);
-      axios(
-        `https://1src.tech/api/functions/sbp_applyPreset/run?key=XFKdw42rYH2pLgGZ9WGzzShWD9GfJZra`,
-        {
-          method: "POST",
-          body: message,
-        }
-      );
+    applyPreset: function (preset) {
+      this.$store.dispatch("applyPreset", preset);
     },
   },
   data() {
@@ -69,27 +72,17 @@ export default {
       errors: [],
     };
   },
+  watch: {
+    show() {
+      this.$store.dispatch("getPresets");
+    },
+  },
   // method: {
   //   sendClickedButton(buttonName: string) {},
   // },
   // Fetches posts when the component is created.
-  created() {
-    axios(
-      `https://1src.tech/api/functions/sbp_getPresets/run?key=XFKdw42rYH2pLgGZ9WGzzShWD9GfJZra`,
-      {
-        method: "GET",
-        headers: { "Access-Control-Allow-Origin": "*" },
-      }
-    )
-      .then((response) => {
-        // JSON responses are automatically parsed.
-        console.log(response);
-        this.posts = response.data.data;
-        console.log(this.posts);
-      })
-      .catch((e) => {
-        this.errors.push(e);
-      });
+  mounted() {
+    this.$store.dispatch("getPresets");
   },
 };
 </script>

@@ -45,6 +45,7 @@ if (import.meta.hot) {
 
 // Create a new store instance.
 const store = new Vuex.Store(storeDefinition);
+store.dispatch('getPartners')
 
 app.use(Vuex);
 
