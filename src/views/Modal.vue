@@ -64,6 +64,7 @@ export default {
   methods: {
     applyPreset: function (preset) {
       this.$store.dispatch("applyPreset", preset);
+      this.$emit('close');
     },
   },
   data() {
