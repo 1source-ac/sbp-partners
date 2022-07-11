@@ -1,99 +1,74 @@
 <template>
   <main class="main-content">
     <!-- static header -->
-    <header class="bg-gradient-to-r from-blue-900 to-blue-800 site-header h-16">
-      <div class="px-3 pt-2">
-        <h1
-          class="
-            text-3xl
-            font-bold font-sans
-            leading-tight
-            text-gray-100
-            title
-            text-center
-            lg:text-left
-          "
-        >
-          <img
-            src="/assets/img/center_weiss.png"
-            class="logo hidden lg:inline"
-          />
-          <span class="hidden lg:inline">
-            <a
-              class="underline-dotted"
-              href="https://smart-commercial-building.de/"
-              >CSCB</a
-            >
-            /
+    <header class="bg-gradient-to-l from-blue-500 to-blue-600 site-header h-20">
+      <div class="px-3 pt-4">
+        <img src="/assets/img/center_weiss.png" class="logo hidden lg:inline" />
+        <span class="hidden lg:inline">
+          <a
+            class="underline-dotted font-mono p-3 text-4xl font-bold leading-tight text-gray-100 text-center lg:text-left"
+            href="https://smart-commercial-building.de/"
+            >CSCB</a
+          >
+        </span>
+        <!-- /
           </span>
           <router-link class="underline" :to="{ name: 'partners' }"
             >Smart Building Platform</router-link
-          >
-          <template v-if="$router.currentRoute.value.name === 'partner'">
+          > -->
+        <!-- <template v-if="$router.currentRoute.value.name === 'partner'">
             /
             <router-link class="underline" :to="{ name: 'partners' }"
               >Unternehmen</router-link
             >
-          </template>
+          </template> -->
+        <span
+          class="text-2xl lg:text-5xl text-white font-mono font-sans text-center p-3 text-3xl leading-tight text-gray-100 title text-center lg:text-left"
+        >
+          Smart Building Platform
+        </span>
 
-          <span class="float-right mr-32" v-if="$store.state.currentConfiguration.name != null">
-            Einstellung: {{ $store.state.currentConfiguration.name }},             <button
+        <span
+          class="float-right mr-32"
+          v-if="$store.state.currentConfiguration.name != null"
+        >
+          Einstellung: {{ $store.state.currentConfiguration.name }},
+          <button
             id="show-modal"
             v-if="$store.state.currentConfiguration.page > 1"
             @click="incrementPage(-1)"
             type="button"
-            class="
-              mdi
-              mdi-arrow-left-bold
-              px-2.5
-              py-1
-              text-center
-              text-4xl
-              text-black-700
+            class="mdi mdi-arrow-left-bold px-2.5 py-1 text-center text-4xl text-black-700"
+          ></button>
+          Seite {{ $store.state.currentConfiguration.page }}/{{
+            $store.state.currentConfiguration.numPages
+          }}
+          <button
+            v-if="
+              $store.state.currentConfiguration.numPages >
+              $store.state.currentConfiguration.page
             "
-          ></button> Seite {{ $store.state.currentConfiguration.page }}/{{$store.state.currentConfiguration.numPages}}
-            <button
-            v-if="$store.state.currentConfiguration.numPages > $store.state.currentConfiguration.page"
             id="show-modal"
             @click="incrementPage(1)"
             type="button"
-            class="
-              mdi
-              mdi-arrow-right-bold
-              px-2.5
-              py-1
-              text-center
-              text-4xl
-              text-black-700
-            "
+            class="mdi mdi-arrow-right-bold px-2.5 py-1 text-center text-4xl text-black-700"
           ></button>
-          </span>
+        </span>
 
-          <button
-            id="show-modal"
-            @click="showModal = true"
-            type="button"
-            class="
-              absolute
-              right-10
-              top-2
-              mdi mdi-monitor-edit
-              px-2.5
-              py-1
-              text-center text-3xl text-black-700
-              border
-              rounded-full
-            "
-          ></button>
-          <Teleport to="body">
-            <!-- use the modal component, pass in the prop -->
-            <modal :show="showModal" @close="showModal = false">
-              <template #header>
-                <h3>Change Diplay Options</h3>
-              </template>
-            </modal>
-          </Teleport>
-        </h1>
+        <button
+          id="show-modal"
+          @click="showModal = true"
+          type="button"
+          class="absolute right-10 top-2 mdi mdi-monitor-edit px-2.5 py-1 text-center text-3xl text-black-700 border rounded-full"
+        ></button>
+        <Teleport to="body">
+          <!-- use the modal component, pass in the prop -->
+          <modal :show="showModal" @close="showModal = false">
+            <template #header>
+              <h3>Change Diplay Options</h3>
+            </template>
+          </modal>
+        </Teleport>
       </div>
     </header>
 
@@ -124,7 +99,7 @@ export default {
   },
   methods: {
     incrementPage(value) {
-      this.$store.dispatch('incrementPage', value)
+      this.$store.dispatch("incrementPage", value);
     },
   },
   data() {
@@ -159,7 +134,7 @@ body {
 .logo {
   height: 2.6rem;
   margin-right: 0.6rem;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
 }
 
 .title {

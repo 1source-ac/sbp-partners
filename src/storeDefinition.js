@@ -8,6 +8,12 @@ const shuffle = (a) => {
   return a;
 };
 
+function partition(array, isValid) {
+  return array.reduce(([pass, fail], elem) => {
+    return isValid(elem) ? [[...pass, elem], fail] : [pass, [...fail, elem]];
+  }, [[], []]);
+}
+
 import { axios } from "@bundled-es-modules/axios";
 
 export default {
@@ -40,7 +46,12 @@ export default {
   },
   mutations: {
     setPartners(state, partners) {
-      state.partners = partners;
+      const [featured, regular] = partition(partners, (e) => !!e.featured);
+      state.partners = {
+        all: partners,
+        featured,
+        regular
+      }
     },
     setPresets(state, presets) {
       state.presets = presets;
@@ -51,7 +62,11 @@ export default {
   },
   state() {
     return {
-      partners: [],
+      partners: {
+        all: [],
+        featured: [],
+        regular: []
+      },
       presets: [],
       currentConfiguration: {
         name: null,
@@ -62,7 +77,7 @@ export default {
   },
   getters: {
     byEscapedName: (state) => (name) => {
-      return state.partners.find(
+      return state.partners.all.find(
         (partner) => partner.name.toLowerCase().replaceAll(" ", "-") === name
       );
     },

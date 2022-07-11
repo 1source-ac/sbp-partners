@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="w-full border-white border-t-4">
-      <h1
+      <!-- <h1
         class="
           py-2
           mt-8
@@ -17,7 +17,7 @@
         "
       >
         Integrierte Lösungen
-      </h1>
+      </h1> -->
     </div>
     <div class="mt-14 partners-container bg-opacity-95">
       <div class="container mx-auto px-7">
@@ -29,13 +29,25 @@
 
         </span>
         </div> -->
+        <h1 class="text-6xl font-extrabold text-white"><span class="px-1 bg-black">Partner</span></h1>
         <div class="flex flex-wrap -mx-5">
-          <template v-for="partner in $store.state.partners">
+          <template v-for="partner in $store.state.partners.featured">
             <Card
               v-if="expandedPartner == ''"
               :key="partner.name"
               :partner="partner"
-              class="lg:w-1/3 md:w-1/2 cursor-pointer"
+              class="lg:w-1/3 md:w-1/1 cursor-pointer"
+            />
+          </template>
+        </div>
+        <h1 class="text-5xl font-extrabold text-white"><span class="px-1 bg-black">Weitere</span></h1>
+        <div class="flex flex-wrap -mx-5">
+          <template v-for="partner in $store.state.partners.regular">
+            <Card
+              v-if="expandedPartner == ''"
+              :key="partner.name"
+              :partner="partner"
+              class="lg:w-1/4 md:w-1/2 cursor-pointer"
             />
           </template>
         </div>
