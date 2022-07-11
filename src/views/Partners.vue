@@ -16,7 +16,7 @@
           from-gray-700
         "
       >
-        Integrierte Unternehmen & Produkte
+        Integrierte Lösungen
       </h1>
     </div>
     <div class="mt-14 partners-container bg-opacity-95">
@@ -31,7 +31,7 @@
         </div> -->
         <div class="flex flex-wrap -mx-5">
           <template v-for="partner in $store.state.partners">
-            <CardCollapsed
+            <Card
               v-if="expandedPartner == ''"
               :key="partner.name"
               :partner="partner"
@@ -47,7 +47,7 @@
 <script>
 import SvgIcon from "@jamescoyle/vue-icon";
 import { mdiAccount } from "@mdi/js";
-import CardCollapsed from "./CardCollapsed.vue";
+import Card from "./Card.vue";
 
 const lorem =
   "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.";
@@ -55,7 +55,7 @@ const lorem =
 export default {
   components: {
     SvgIcon,
-    CardCollapsed,
+    Card,
   },
   data() {
     return {

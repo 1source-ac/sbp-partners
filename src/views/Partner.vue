@@ -3,42 +3,28 @@
     <div class="container lg:mx-auto">
       <div class="w-full my-4 column h-full">
         <article
-          class="
-            bg-gray-50
-            text-gray text-black
-            relative
-            partner-grid
-            grid grid-cols-1
-            lg:grid-cols-2
-            shadow-md
-            rounded-b-2xl
-            overflow-hidden
-          "
+          class="bg-gray-50 text-gray text-black relative partner-grid grid grid-cols-1 lg:grid-cols-2 shadow-md rounded-b-2xl overflow-hidden"
         >
           <header class="flex flex-col leading-tight px-6 pb-4">
             <h1 class="font-mono text-7xl font-extrabold">
               {{ partner.name }}
             </h1>
             <h2
-              class="
-                font-mono
-                pb-8
-                font-extrabold
-                text-3xl
-                color-green
-                font-sans
-              "
+              class="font-mono pb-8 font-extrabold text-3xl color-green font-sans"
             >
               {{ partner.subtitle }}
             </h2>
-            <div class="text-xl font-light">
+            <div
+              class="text-xl font-light whitespace-pre-line"
+              id="description"
+            >
               {{ partner.description }}
             </div>
           </header>
           <div class="h-full" v-if="partner.coverImageUrl">
             <img :src="partner.coverImageUrl" />
           </div>
-          <div v-if="partner.liveData">
+          <div v-if="true || partner.liveData">
             <div class="bg-gray-800 text-gray-100 pt-5">
               <h1 class="text-4xl pl-6 py-2 font-extrabold">
                 Live-Daten aus Aachen
@@ -62,34 +48,14 @@
                 </div>
               </div>
               <div
-                class="
-                  font-mono
-                  w-full
-                  transition-colors
-                  bg-blue-900
-                  hover:bg-blue-600
-                  cursor-pointer
-                  text-2xl
-                  p-4
-                  text-center
-                  bg-gray-800
-                  text-gray-100
-                "
+                class="font-mono w-full transition-colors bg-blue-900 hover:bg-blue-600 cursor-pointer text-2xl p-4 text-center bg-gray-800 text-gray-100"
               >
                 Weitere Daten einsehen >
               </div>
             </div>
           </div>
           <h1
-            class="
-              text-4xl
-              pl-6
-              py-3
-              font-extrabold
-              full
-              bg-gray-800
-              text-white
-            "
+            class="text-4xl pl-6 py-3 font-extrabold full bg-gray-800 text-white"
             v-if="partner.moreImages"
           >
             Impressionen
@@ -105,19 +71,9 @@
             <img class="object-cover mx-auto" :src="image.url" />
           </div>
           <h1
-            class="
-              text-4xl
-              font-mono
-              pl-6
-              py-3
-              font-extrabold
-              mt-5
-              full
-              bg-blue-800
-              text-white
-            "
+            class="text-4xl font-mono pl-6 py-3 font-extrabold mt-5 full bg-blue-800 text-white"
           >
-            Verbaute Produkte
+            Ausgestellte Lösungen
           </h1>
           <div class="hs-wrapper flex relative flex-row full my-4 px-5">
             <div
@@ -126,44 +82,20 @@
               id="products"
             >
               <div
-                class="
-                  relative
-                  pb-5
-                  bg-gray-100
-                  shadow-inner shadow-xl
-                  flex flex-col
-                  overflow-hidden
-                  pt-2
-                  justify-start
-                  align-top
-                  w-96
-                "
+                class="relative pb-5 bg-gray-100 shadow-inner shadow-xl flex flex-col overflow-hidden pt-2 justify-start align-top w-96"
                 v-for="(product, index) in partner.products"
                 :key="index"
               >
                 <h1 class="text-center font-bold text-3xl">
                   {{ product.name }}
                 </h1>
-                <img
-                  class="object-contain max-h-32 px-5 py-5"
-                  :src="product.imageUrl"
-                />
+                <img class="px-5 py-5" :src="product.imageUrl" />
                 <div class="font-light px-3 pt-5 pb-8 text-justify">
                   {{ product.description }}
                 </div>
                 <div
                   v-if="product.moreInfoUrl"
-                  class="
-                    text-center
-                    w-full
-                    transition-colors
-                    bg-blue-700
-                    hover:bg-blue-600
-                    text-white text-2xl
-                    font-sans font-bold
-                    absolute
-                    bottom-0
-                  "
+                  class="text-center w-full transition-colors bg-blue-700 hover:bg-blue-600 text-white text-2xl font-sans font-bold absolute bottom-0"
                 >
                   <a :href="product.moreInfoUrl" class="font-mono"
                     >Mehr Informationen
@@ -204,15 +136,7 @@
             <span class="mt-6 flex flex-row">
               <div class="pl-6 photo-wrapper text-white" v-if="partner.contact">
                 <img
-                  class="
-                    w-32
-                    h-32
-                    border-white
-                    bg-white
-                    rounded-full
-                    object-cover
-                    border-2
-                  "
+                  class="w-32 h-32 border-white bg-white rounded-full object-cover border-2"
                   :src="
                     partner.contact
                       ? partner.contact.imageUrl ?? '/assets/img/phone.jpg'
@@ -267,7 +191,7 @@
 <script>
 import SvgIcon from "@jamescoyle/vue-icon";
 import { mdiAccount } from "@mdi/js";
-import CardCollapsed from "./CardCollapsed.vue";
+import Card from "./Card.vue";
 import easyScroll from "easy-scroll";
 import { axios } from "@bundled-es-modules/axios";
 
@@ -295,7 +219,7 @@ const API_URL = "https://1src.tech/api/things/%id/state";
 export default {
   components: {
     SvgIcon,
-    CardCollapsed,
+    Card,
   },
   data() {
     return {
@@ -304,6 +228,68 @@ export default {
       path: mdiAccount,
       intervalId: null,
       liveState: {},
+      liveData: [
+        {
+          thingId: 12944,
+          mapping: {
+            value: {
+              to: "airQuality",
+              unit: "ppm CO2",
+              label: "Luftqualität",
+              convert: (value) => Math.floor(value * 10) / 10,
+              icon: "mdi-air-filter",
+            },
+          },
+        },
+        {
+          thingId: 12950,
+          mapping: {
+            value: {
+              to: "brightness",
+              unit: "lm",
+              label: "Helligkeit",
+              convert: (value) => Math.floor(value * 10) / 10,
+              icon: "mdi-brightness-7",
+            },
+          },
+        },
+        {
+          thingId: 12957,
+          mapping: {
+            value: {
+              to: "temperature",
+              unit: "°C",
+              label: "Temperatur 1",
+              convert: (value) => Math.floor(value * 10) / 10,
+              icon: "mdi-temperature-celsius",
+            },
+          },
+        },
+        {
+          thingId: 12948,
+          mapping: {
+            value: {
+              to: "humidity",
+              unit: "%rH",
+              label: "Feuchte 1",
+              convert: (value) => Math.floor(value * 10) / 10,
+              icon: "mdi-air-humidifier",
+            },
+          },
+        },
+        {
+          thingId: 12958,
+          mapping: {
+            value: {
+              to: "valve",
+              unit: "%",
+              label: "Ventilstellung",
+              convert: (value) => Math.floor(value * 10) / 10,
+              icon: "mdi-valve",
+            },
+          },
+        },
+      ],
     };
   },
   computed: {
@@ -314,10 +300,19 @@ export default {
   mounted() {
     if (!this.partner) return this.$router.replace({ name: "partners" });
 
-    if (this.partner?.liveData) {
+    if (this.liveData || this.partner?.liveData) {
       this.intervalId = setInterval(this.refreshLiveData, 1000);
       this.refreshLiveData();
     }
+
+    function bold(text) {
+      var bold = /\*\*(.*?)\*\*/gm;
+      var html = text.replace(bold, "<strong class='font-bold'>$1</strong>");
+      return html;
+    }
+
+    var result = bold(document.getElementById("description").innerHTML);
+    document.getElementById("description").innerHTML = result;
   },
   unmounted() {
     if (this.intervalId !== null) clearInterval(this.intervalId);
@@ -349,10 +344,10 @@ export default {
         });
     },
     async refreshLiveData() {
-      if (!this.partner.liveData) return;
-      if (Array.isArray(this.partner.liveData))
-        this.partner.liveData.forEach((entry) => this.fetchThingUpdate(entry));
-      else this.fetchThingUpdate(this.partner.liveData);
+      if (!this.liveData && !this.partner.liveData) return;
+      if (Array.isArray(this.liveData ?? this.partner.liveData))
+        (this.liveData ?? this.partner.liveData).forEach((entry) => this.fetchThingUpdate(entry));
+      else this.fetchThingUpdate(this.liveData ?? this.partner.liveData);
     },
     scrollProducts(direction) {
       easyScroll({
