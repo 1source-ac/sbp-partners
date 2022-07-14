@@ -3,21 +3,15 @@
     <div class="container lg:mx-auto">
       <div class="w-full my-4 column h-full">
         <article
-          class="bg-gray-50 text-gray text-black relative partner-grid grid grid-cols-1 lg:grid-cols-2 shadow-md rounded-b-2xl overflow-hidden"
-        >
+          class="bg-gray-50 text-gray text-black relative partner-grid grid grid-cols-1 lg:grid-cols-2 shadow-md rounded-b-2xl overflow-hidden">
           <header class="flex flex-col leading-tight px-6 pb-4">
             <h1 class="font-mono text-7xl font-extrabold">
               {{ partner.name }}
             </h1>
-            <h2
-              class="font-mono pb-8 font-extrabold text-3xl color-green font-sans"
-            >
+            <h2 class="font-mono pb-8 font-extrabold text-3xl color-green font-sans">
               {{ partner.subtitle }}
             </h2>
-            <div
-              class="text-xl font-light whitespace-pre-line"
-              id="description"
-            >
+            <div class="text-xl font-light whitespace-pre-line" id="description">
               {{ partner.description }}
             </div>
           </header>
@@ -48,44 +42,28 @@
                 </div>
               </div>
               <div
-                class="font-mono w-full transition-colors bg-blue-900 hover:bg-blue-600 cursor-pointer text-2xl p-4 text-center bg-gray-800 text-gray-100"
-              >
+                class="font-mono w-full transition-colors bg-blue-900 hover:bg-blue-600 cursor-pointer text-2xl p-4 text-center bg-gray-800 text-gray-100">
                 Weitere Daten einsehen >
               </div>
             </div>
           </div>
-          <h1
-            class="text-4xl pl-6 py-3 font-extrabold full bg-gray-800 text-white"
-            v-if="partner.moreImages"
-          >
+          <h1 class="text-4xl pl-6 py-3 font-extrabold full bg-gray-800 text-white" v-if="partner.moreImages">
             Impressionen
           </h1>
-          <div
-            class="full ml-5 px-6"
-            v-for="(image, index) in partner.moreImages"
-            :key="index"
-          >
+          <div class="full ml-5 px-6" v-for="(image, index) in partner.moreImages" :key="index">
             <h1 class="text-3xl font-semibold my-5 full">
               {{ image.title }}
             </h1>
             <img class="object-cover mx-auto" :src="image.url" />
           </div>
-          <h1
-            class="text-4xl font-mono pl-6 py-3 font-extrabold mt-5 full bg-blue-800 text-white"
-          >
+          <h1 class="text-4xl font-mono pl-6 py-3 font-extrabold mt-5 full bg-blue-800 text-white">
             Ausgestellte Lösungen
           </h1>
           <div class="hs-wrapper flex relative flex-row full my-4 px-5">
-            <div
-              ref="products"
-              class="hs-container overflow-hidden"
-              id="products"
-            >
+            <div ref="products" class="hs-container overflow-hidden" id="products">
               <div
                 class="relative pb-5 bg-gray-100 shadow-inner shadow-xl flex flex-col overflow-hidden pt-2 justify-start align-top w-96"
-                v-for="(product, index) in partner.products"
-                :key="index"
-              >
+                v-for="(product, index) in partner.products" :key="index">
                 <h1 class="text-center font-bold text-3xl">
                   {{ product.name }}
                 </h1>
@@ -93,32 +71,23 @@
                 <div class="font-light px-3 pt-5 pb-8 text-justify">
                   {{ product.description }}
                 </div>
-                <div
-                  v-if="product.moreInfoUrl"
-                  class="text-center w-full transition-colors bg-blue-700 hover:bg-blue-600 text-white text-2xl font-sans font-bold absolute bottom-0"
-                >
-                  <a :href="product.moreInfoUrl" class="font-mono"
-                    >Mehr Informationen
+                <div v-if="product.moreInfoUrl"
+                  class="text-center w-full transition-colors bg-blue-700 hover:bg-blue-600 text-white text-2xl font-sans font-bold absolute bottom-0">
+                  <a :href="product.moreInfoUrl" class="font-mono">Mehr Informationen
                     <span class="mdi mdi-arrow-right-box"></span>
                   </a>
                 </div>
               </div>
             </div>
-            <div
-              class="absolute right-2 -my-5 arrow"
-              @click="scrollProducts('right')"
-            >
+            <div class="absolute right-2 -my-5 arrow" @click="scrollProducts('right')">
               <i></i>
               <svg>
                 <use xlink:href="#circle" />
               </svg>
             </div>
             <div class="hidden">{{ $refs.products }}</div>
-            <div
-              v-if="$refs.products ? $refs.products.scrollLeft > 0 : false"
-              class="absolute top-0 -my-5 arrow left"
-              @click="scrollProducts('left')"
-            >
+            <div v-if="$refs.products ? $refs.products.scrollLeft > 0 : false" class="absolute top-0 -my-5 arrow left"
+              @click="scrollProducts('left')">
               <i></i>
               <svg>
                 <use xlink:href="#circle" />
@@ -127,23 +96,17 @@
           </div>
           <div class="pb-5 bg-gray-800">
             <div>
-              <h1
-                class="text-4xl pt-4 pl-6 font-extrabold bg-gray-800 text-white"
-              >
+              <h1 class="text-4xl pt-4 pl-6 font-extrabold bg-gray-800 text-white">
                 Kontakt
               </h1>
             </div>
             <span class="mt-6 flex flex-row">
               <div class="pl-6 photo-wrapper text-white" v-if="partner.contact">
-                <img
-                  class="w-32 h-32 border-white bg-white rounded-full object-cover border-2"
-                  :src="
-                    partner.contact
-                      ? partner.contact.imageUrl ?? '/assets/img/phone.jpg'
-                      : '/assets/img/phone.jpg'
-                  "
-                  :alt="`Kontaktbild`"
-                />
+                <img class="w-32 h-32 border-white bg-white rounded-full object-cover border-2" :src="
+                  partner.contact
+                    ? partner.contact.imageUrl ?? '/assets/img/phone.jpg'
+                    : '/assets/img/phone.jpg'
+                " :alt="`Kontaktbild`" />
               </div>
               <div class="pl-6 pb-4">
                 <h3 class="text-3xl text-gray-200 font-bold leading-8">
@@ -153,16 +116,11 @@
                   <p>{{ partner.contact ? partner.contact.position : "" }}</p>
                 </div>
                 <div class="text-gray-100 text-lg font-semibold">
-                  <a
-                    class="text-lg"
-                    :href="`mailto:${
-                      partner.contact ? partner.contact.email : ''
-                    }`"
-                    ><span class="mdi mdi-email-send"></span>
+                  <a class="text-lg" :href="`mailto:${partner.contact ? partner.contact.email : ''
+                  }`"><span class="mdi mdi-email-send"></span>
                     <span class="underline">{{
-                      partner.contact ? partner.contact.email : ""
-                    }}</span></a
-                  >
+                        partner.contact ? partner.contact.email : ""
+                    }}</span></a>
                 </div>
               </div>
             </span>
@@ -170,14 +128,10 @@
           <div class="pt-4 pl-6 bg-gray-800 text-white">
             <h1 class="text-4xl font-extrabold">Links</h1>
             <div class="mt-1 flex flex-col pl-4">
-              <div
-                v-for="(link, index) in partner.links"
-                :key="index"
-                class="text-xl"
-              >
+              <div v-for="(link, index) in partner.links" :key="index" class="text-xl">
                 <span class="mdi" :class="link.icon"></span>
                 <a class="font-mono underline font-bold" :href="link.url">{{
-                  link.label
+                    link.label
                 }}</a>
               </div>
             </div>
@@ -228,74 +182,127 @@ export default {
       path: mdiAccount,
       intervalId: null,
       liveState: {},
-      liveData: [
-        {
-          thingId: 12944,
-          mapping: {
-            value: {
-              to: "airQuality",
-              unit: "ppm CO2",
-              label: "Luftqualität",
-              convert: (value) => Math.floor(value * 10) / 10,
-              icon: "mdi-air-filter",
-            },
-          },
-        },
-        {
-          thingId: 12950,
-          mapping: {
-            value: {
-              to: "brightness",
-              unit: "lm",
-              label: "Helligkeit",
-              convert: (value) => Math.floor(value * 10) / 10,
-              icon: "mdi-brightness-7",
-            },
-          },
-        },
-        {
-          thingId: 12957,
-          mapping: {
-            value: {
-              to: "temperature",
-              unit: "°C",
-              label: "Temperatur 1",
-              convert: (value) => Math.floor(value * 10) / 10,
-              icon: "mdi-temperature-celsius",
-            },
-          },
-        },
-        {
-          thingId: 12948,
-          mapping: {
-            value: {
-              to: "humidity",
-              unit: "%rH",
-              label: "Feuchte 1",
-              convert: (value) => Math.floor(value * 10) / 10,
-              icon: "mdi-air-humidifier",
-            },
-          },
-        },
-        {
-          thingId: 12958,
-          mapping: {
-            value: {
-              to: "valve",
-              unit: "%",
-              label: "Ventilstellung",
-              convert: (value) => Math.floor(value * 10) / 10,
-              icon: "mdi-valve",
-            },
-          },
-        },
-      ],
     };
   },
   computed: {
     partner() {
       return this.$store.getters.byEscapedName(this.$route.params.name);
     },
+    liveData() {
+      if (this.$route.params.name === "zumtobel") {
+        return [
+          {
+            thingId: 33954,
+            mapping: {
+              carbonDioxide: {
+                to: "airQuality",
+                unit: "ppm CO2",
+                label: "CO2",
+                convert: (value) => Math.floor(value * 10) / 10,
+                icon: "mdi-molecule-co2",
+              },
+              tvoc: {
+                to: "tvoc",
+                unit: "ppb TVOC",
+                label: "Luftqualität",
+                convert: (value) => Math.floor(value * 10) / 10,
+                icon: "mdi-air-filter",
+              },
+              humidity: {
+                to: "humidity",
+                unit: "% rH",
+                label: "Luftfeuchte",
+                convert: (value) => Math.floor(value * 10) / 10,
+                icon: "mdi-thermometer-water",
+              },
+              lightIntensity: {
+                to: "lightIntensity",
+                unit: "",
+                label: "Lichtintensität",
+                convert: (value) => Math.floor(value * 10) / 10,
+                icon: "mdi-lightbulb",
+              },
+              airpressure: {
+                to: "airpressure",
+                unit: "",
+                label: "Luftdruck",
+                convert: (value) => Math.floor(value * 10) / 10,
+                icon: "mdi-cloud-download",
+              },
+              temperature: {
+                to: "temperature",
+                unit: "°C",
+                label: "Temperatur",
+                convert: (value) => Math.floor(value * 10) / 10,
+                icon: "mdi-temperature-celsius",
+              }
+            },
+          }
+        ];
+      } else
+        return [
+          {
+            thingId: 12944,
+            mapping: {
+              value: {
+                to: "airQuality",
+                unit: "ppm CO2",
+                label: "Luftqualität",
+                convert: (value) => Math.floor(value * 10) / 10,
+                icon: "mdi-air-filter",
+              },
+            },
+          },
+          {
+            thingId: 12950,
+            mapping: {
+              value: {
+                to: "brightness",
+                unit: "lm",
+                label: "Helligkeit",
+                convert: (value) => Math.floor(value * 10) / 10,
+                icon: "mdi-brightness-7",
+              },
+            },
+          },
+          {
+            thingId: 12957,
+            mapping: {
+              value: {
+                to: "temperature",
+                unit: "°C",
+                label: "Temperatur 1",
+                convert: (value) => Math.floor(value * 10) / 10,
+                icon: "mdi-temperature-celsius",
+              },
+            },
+          },
+          {
+            thingId: 12948,
+            mapping: {
+              value: {
+                to: "humidity",
+                unit: "%rH",
+                label: "Feuchte 1",
+                convert: (value) => Math.floor(value * 10) / 10,
+                icon: "mdi-air-humidifier",
+              },
+            },
+          },
+          {
+            thingId: 12958,
+            mapping: {
+              value: {
+                to: "valve",
+                unit: "%",
+                label: "Ventilstellung",
+                convert: (value) => Math.floor(value * 10) / 10,
+                icon: "mdi-valve",
+              },
+            },
+          },
+        ];
+    }
   },
   mounted() {
     if (!this.partner) return this.$router.replace({ name: "partners" });
@@ -396,11 +403,12 @@ export default {
 .mdi::before {
   padding-right: 0.2rem;
 }
+
 .grid-item {
   --tw-shadow: 2px 5px 15px 0 rgba(10, 12, 43, 0.8);
 }
 
-.partner-grid > .full {
+.partner-grid>.full {
   grid-column: 1 / -1;
 }
 
@@ -429,12 +437,15 @@ export default {
   border-radius: 50%;
   cursor: pointer;
   transition: border-color 0.2s;
+
   &:hover {
     --border: rgba(255, 255, 255, 0.5);
   }
+
   &.left {
     transform: scaleX(-1);
   }
+
   i {
     display: block;
     position: absolute;
@@ -443,6 +454,7 @@ export default {
     height: 20px;
     left: 50%;
     top: 50%;
+
     &:before,
     &:after {
       content: "";
@@ -457,13 +469,16 @@ export default {
       display: block;
       transform-origin: 9px 50%;
     }
+
     &:before {
       transform: rotate(-40deg);
     }
+
     &:after {
       transform: rotate(40deg);
     }
   }
+
   &:before,
   &:after {
     content: "";
@@ -476,6 +491,7 @@ export default {
     border-radius: 50%;
     border: 2px solid var(--border);
   }
+
   svg {
     width: 44px;
     height: 44px;
@@ -488,15 +504,19 @@ export default {
     stroke-dasharray: 126 126 0;
     transform: rotate(0deg);
   }
+
   &.animate {
     svg {
       animation: stroke 1s ease forwards 0.3s;
     }
+
     i {
       animation: arrow 1.6s ease forwards;
+
       &:before {
         animation: arrowUp 1.6s ease forwards;
       }
+
       &:after {
         animation: arrowDown 1.6s ease forwards;
       }
@@ -510,7 +530,8 @@ export default {
   display: inline-block;
   position: relative;
 }
-.livenow > div {
+
+.livenow>div {
   vertical-align: middle;
   width: 2rem;
   height: 2rem;
@@ -523,19 +544,23 @@ export default {
   animation: live 3.5s infinite ease-in-out;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
+
   &:nth-child(1) {
     background-color: rgba(255, 255, 255, 0.3);
     -webkit-animation-delay: -0.1s;
     animation-delay: -0.1s;
   }
+
   &:nth-child(2) {
     -webkit-animation-delay: 0.16s;
     animation-delay: 0.5s;
   }
+
   &:nth-child(3) {
     -webkit-animation-delay: 0.42s;
     animation-delay: 0.42s;
   }
+
   &:nth-child(4) {
     border: 3px solid rgba(255, 255, 255, 1);
     -webkit-animation-delay: -0.42s;
@@ -544,6 +569,7 @@ export default {
 }
 
 @keyframes live {
+
   0%,
   50%,
   100% {
@@ -551,11 +577,13 @@ export default {
     background-color: rgb(255, 59, 59);
     -webkit-transform: scale(0.7);
   }
+
   25% {
     transform: scale(1);
     background-color: rgb(255, 59, 59);
     -webkit-transform: scale(0.5);
   }
+
   75% {
     background-color: rgb(255, 59, 59);
     transform: scale(0.4);
